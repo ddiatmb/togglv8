@@ -3,9 +3,10 @@
 
 [togglv8](/) is a Ruby Wrapper for [Toggl API v8](https://github.com/toggl/toggl_api_docs). It is designed to mirror the Toggl API as closely as possible.
 
-**Note:** Currently togglv8 only includes calls to [Toggl API](https://github.com/toggl/toggl_api_docs/blob/master/toggl_api.md), not the [Reports API](https://github.com/toggl/toggl_api_docs/blob/master/reports.md)
+This is a gemified version of the ruby wrapper created by [Tom Kane](https://github.com/kanet77/togglv8) and [itaymendel](https://github.com/itaymendel/togglv8).
 
 # Usage
+- gem install togglv8
 - See [test.rb](test.rb) and [atest.rb](atest.rb) for examples of calling the Toggl API with Ruby.
 - See [API calls.md](API calls.md) for examples of calling the Toggl API with resty (like curl) on the command line.
 

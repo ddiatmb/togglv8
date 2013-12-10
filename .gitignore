@@ -4,3 +4,6 @@ toggl_entities.txt
 me.json
 Vagrantfile
 .vagrant
+pkg/*
+bundle/*
+.gem
