@@ -1,5 +1,7 @@
 require "togglv8/version"
 require 'togglv8/toggl_con'
+require 'togglv8/workspace'
+require 'togglv8/project'
 require 'reportsV2'
 module Togglv8
   #! /usr/bin/env rvm ruby-1.9.3-head do ruby
@@ -9,6 +11,7 @@ module Togglv8
   require 'logger'
   require 'faraday'
   require 'json'
+
 
   require 'awesome_print' # for debug output
 
@@ -112,17 +115,10 @@ module Togglv8
       post "projects", {project: params}
     end
 
-    def get_project(project_id)
-      get "projects/#{project_id}"
+    def project(project_id)
+      Project.new(@conn, project_id)
     end
 
-    def update_project(project_id, params)
-      put "projects/#{project_id}", {project: params}
-    end
-
-    def get_project_users(project_id)
-      get "projects/#{project_id}/project_users"
-    end
 
   #---------------------#
   #--- Project users ---#
@@ -300,30 +296,13 @@ module Togglv8
   # premium : If it's a pro workspace or not. Shows if someone is paying for the workspace or not (boolean, not required)
   # at      : timestamp that is sent in the response, indicates the time item was last updated
 
+    def workspace(workspace_id)
+      Workspace.new(@conn, workspace_id)
+    end
+
     def workspaces
       get "workspaces"
     end
 
-    def clients(workspace=nil)
-      if workspace.nil?
-        get "clients"
-      else
-        get "workspaces/#{workspace}/clients"
-      end
-    end
-
-    def projects(workspace, params={})
-      active = params.has_key?(:active) ? "?active=#{params[:active]}" : ""
-      get "workspaces/#{workspace}/projects#{active}"
-    end
-
-    def users(workspace)
-      get "workspaces/#{workspace}/users"
-    end
-
-    def tasks(workspace, params={})
-      active = params.has_key?(:active) ? "?active=#{params[:active]}" : ""
-      get "workspaces/#{workspace}/tasks#{active}"
-    end
   end
 end
