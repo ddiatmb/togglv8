@@ -32,6 +32,12 @@ def print_projects(tog)
       # puts p
     end
 
+    gs = tog.groups(wid)
+    gs.each do |g|
+      @gname = c['name'] + " [" + c['id'].to_s + "] "
+      puts "|Project| #@wname - #@gname"
+    end
+
     cs = tog.clients(wid)
     cs.each do |c|
       @cname = c['name'] + " [" + c['id'].to_s + "] "

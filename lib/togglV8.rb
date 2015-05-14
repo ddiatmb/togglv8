@@ -339,8 +339,17 @@ class Toggl
     get "workspaces/#{workspace}/projects#{active}"
   end
 
+  def groups(workspace, params={})
+    active = params.has_key?(:active) ? "?active=#{params[:active]}" : ""
+    get "workspaces/#{workspace}/groups#{active}"
+  end
+
   def users(workspace)
     get "workspaces/#{workspace}/users"
+  end
+
+  def workspace_users(workspace)
+    get "workspaces/#{workspace}/workspace_users"
   end
 
   def tasks(workspace, params={})
