@@ -1,9 +1,9 @@
 # Toggl API v8
 [Toggl](http://www.toggl.com) is a time tracking tool.
 
-[rackspace-toggl](/) is a Ruby Wrapper for [Toggl API v8](https://github.com/toggl/toggl_api_docs). It is designed to mirror the Toggl API as closely as possible. This repo is a fork of Tom Kanes original TogglV8 implementation with additional API calls to support some undocumented features of the TogglV8 API.
+[r-toggl](/) is a Ruby Wrapper for [Toggl API v8](https://github.com/toggl/toggl_api_docs). It is designed to mirror the Toggl API as closely as possible. This repo is a fork of Tom Kanes original TogglV8 implementation with additional API calls to support some undocumented features of the TogglV8 API.
 
-**Note:** Currently rackspace-toggl only includes calls to [Toggl API](https://github.com/toggl/toggl_api_docs/blob/master/toggl_api.md), not the [Reports API](https://github.com/toggl/toggl_api_docs/blob/master/reports.md)
+**Note:** Currently r-toggl only includes calls to [Toggl API](https://github.com/toggl/toggl_api_docs/blob/master/toggl_api.md), not the [Reports API](https://github.com/toggl/toggl_api_docs/blob/master/reports.md)
 
 # Usage
 - See [test.rb](test.rb) and [atest.rb](atest.rb) for examples of calling the Toggl API with Ruby.

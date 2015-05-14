@@ -2,7 +2,7 @@ version = File.open('VERSION', 'rb').read
 
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
-  s.name        = 'rackspace-toggl'
+  s.name        = 'r-toggl'
   s.version     = version
   s.summary     = 'Extended ruby wrapper for Toggl API v8'
   s.description = 'Extended ruby wrapper for Toggl API v8 - forked from https://github.com/kanet77/togglv8'
