@@ -1,25 +1,32 @@
-version = File.open('VERSION', 'rb').read
+# coding: utf-8
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'r-toggl/version'
 
-Gem::Specification.new do |s|
-  s.platform    = Gem::Platform::RUBY
-  s.name        = 'r-toggl'
-  s.version     = version
-  s.summary     = 'Extended ruby wrapper for Toggl API v8'
-  s.description = 'Extended ruby wrapper for Toggl API v8 - forked from https://github.com/kanet77/togglv8'
+Gem::Specification.new do |spec|
+  spec.name          = "r-toggl"
+  spec.version       = Toggl::VERSION
+  spec.authors       = ["Paweł Pawlik"]
+  spec.email         = ["pawel.pawlik@millwardbrown.com"]
 
-  s.license = 'MIT'
-  s.author   = 'nathan-d'
-  s.email    = 'nathan@rackspace.co.uk'
-  s.homepage = 'https://github.com/nathan-d/togglv8'
+  if spec.respond_to?(:metadata)
+    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
+  end
 
-  s.files = %w(README.md lib/togglV8.rb)
+  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
+  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.license       = "MIT"
 
-  s.required_ruby_version     = '>= 1.9.3'
-  s.required_rubygems_version = '>= 1.8.11'
+  spec.files         = Dir['Rakefile', '{features,lib,spec}/**/*', 'README*', 'LICENSE*']
+  spec.require_paths = %w[ lib ]
 
-  s.add_runtime_dependency 'faraday', '~> 0.9'
-  s.add_runtime_dependency 'awesome_print', '~> 1.1'
-  s.add_runtime_dependency 'json', '~> 1.8'
-  s.add_runtime_dependency 'logger', '~> 1.2'
-  s.add_runtime_dependency 'jazor', '~> 0.1'
+  spec.add_runtime_dependency 'faraday', '~> 0.9'
+  spec.add_runtime_dependency 'awesome_print', '~> 1.1'
+  spec.add_runtime_dependency 'json', '~> 1.8'
+  spec.add_runtime_dependency 'logger', '~> 1.2'
+  spec.add_runtime_dependency 'jazor', '~> 0.1'
+
+  spec.add_development_dependency "bundler", "~> 1.5"
+  spec.add_development_dependency "rake", "~> 10.0"
 end
