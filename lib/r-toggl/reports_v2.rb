@@ -2,12 +2,9 @@
 # encoding: utf-8
 
 require 'rubygems'
-require 'logger'
 require 'faraday'
 require 'json'
 require_relative 'connection'
-
-require 'awesome_print' # for debug output
 
 module Toggl
   class ReportsV2
@@ -15,7 +12,7 @@ module Toggl
 
 
     def initialize(username=nil, password='api_token', user_agent='api', debug=nil)
-      self.debug_on(debug) if !debug.nil?
+      self.debug_on(debug) if !debug.nil? || ENV['DEBUG']
       if (password.to_s == 'api_token' && username.to_s == '')
         toggl_api_file = ENV['HOME']+'/.toggl'
         if FileTest.exist?(toggl_api_file) then

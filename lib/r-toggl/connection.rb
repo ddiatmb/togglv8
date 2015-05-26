@@ -8,7 +8,6 @@ module Toggl
     def connection(username, password, url = nil)
       Faraday.new(url: url) do |faraday|
         faraday.request :url_encoded
-        faraday.response :logger, Logger.new('faraday.log')
         faraday.adapter Faraday.default_adapter
         faraday.headers = {"Content-Type" => "application/json"}
         faraday.basic_auth username, password
@@ -39,7 +38,6 @@ module Toggl
     def get(resource)
       puts "GET #{resource}" if @debug
       full_res = self.conn.get(resource)
-      ap full_res if @debug
       res = JSON.parse(full_res.env[:body])
       res.is_a?(Array) || res['data'].nil? ? res : res['data']
     end
@@ -47,7 +45,6 @@ module Toggl
     def post(resource, data)
       puts "POST #{resource} / #{data}" if @debug
       full_res = self.conn.post(resource, JSON.generate(data))
-      ap full_res.env if @debug
       if (200 == full_res.env[:status]) then
         res = JSON.parse(full_res.env[:body])
         res['data'].nil? ? res : res['data']
@@ -59,7 +56,6 @@ module Toggl
     def put(resource, data)
       puts "PUT #{resource} / #{data}" if @debug
       full_res = self.conn.put(resource, JSON.generate(data))
-      # ap full_res.env if @debug
       res = JSON.parse(full_res.env[:body])
       res['data'].nil? ? res : res['data']
     end
@@ -67,7 +63,6 @@ module Toggl
     def delete(resource)
       puts "DELETE #{resource}" if @debug
       full_res = self.conn.delete(resource)
-      # ap full_res.env if @debug
       (200 == full_res.env[:status]) ? "" : eval(full_res.env[:body])
     end
   end
