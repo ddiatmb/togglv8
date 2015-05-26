@@ -1,7 +1,7 @@
 #! /usr/bin/env rvm ruby-1.9.3-head do ruby
 # encoding: utf-8
 
-require_relative 'togglV8'
+require_relative 'lib/togglV8'
 require 'time'
 
 tog = Toggl.new

@@ -315,12 +315,63 @@ class Toggl
     get "workspaces/#{workspace}/projects#{active}"
   end
 
+  def groups(workspace, params={})
+    active = params.has_key?(:active) ? "?active=#{params[:active]}" : ""
+    get "workspaces/#{workspace}/groups#{active}"
+  end
+
   def users(workspace)
     get "workspaces/#{workspace}/users"
+  end
+
+  def workspace_users(workspace)
+    get "workspaces/#{workspace}/workspace_users"
   end
 
   def tasks(workspace, params={})
     active = params.has_key?(:active) ? "?active=#{params[:active]}" : ""
     get "workspaces/#{workspace}/tasks#{active}"
   end
+
+#---------------#
+#--- Private ---#
+#---------------#
+
+  private
+
+  def get(resource)
+    puts "GET #{resource}" if @debug
+    full_res = self.conn.get(resource)
+    # ap full_res.env if @debug
+    res = JSON.parse(full_res.env[:body])
+    res.is_a?(Array) || res['data'].nil? ? res : res['data']
+  end
+
+  def post(resource, data)
+    puts "POST #{resource} / #{data}" if @debug
+    full_res = self.conn.post(resource, JSON.generate(data))
+    ap full_res.env if @debug
+    if (200 == full_res.env[:status]) then
+      res = JSON.parse(full_res.env[:body])
+      res['data'].nil? ? res : res['data']
+    else
+      eval(full_res.env[:body])
+    end
+  end
+
+  def put(resource, data)
+    puts "PUT #{resource} / #{data}" if @debug
+    full_res = self.conn.put(resource, JSON.generate(data))
+    # ap full_res.env if @debug
+    res = JSON.parse(full_res.env[:body])
+    res['data'].nil? ? res : res['data']
+  end
+
+  def delete(resource)
+    puts "DELETE #{resource}" if @debug
+    full_res = self.conn.delete(resource)
+    # ap full_res.env if @debug
+    (200 == full_res.env[:status]) ? "" : eval(full_res.env[:body])
+  end
+
 end

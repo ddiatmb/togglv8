@@ -1,7 +1,7 @@
 #! /usr/bin/env rvm ruby-1.9.3-head do ruby
 # encoding: utf-8
 
-require_relative 'togglV8'
+require_relative 'lib/togglV8'
 require 'awesome_print'
 require 'time'
 
@@ -30,6 +30,12 @@ def print_projects(tog)
       @tname = tp[p['id']] ? ' (' + tp[p['id']].to_s + ')' : ''
       puts "|Project| #@wname - #@pname#@tname"
       # puts p
+    end
+
+    gs = tog.groups(wid)
+    gs.each do |g|
+      @gname = c['name'] + " [" + c['id'].to_s + "] "
+      puts "|Project| #@wname - #@gname"
     end
 
     cs = tog.clients(wid)
