@@ -15,4 +15,4 @@
 - Thanks to Tom Kane for the [TogglV8 gem](https://github.com/kanet77/togglv8).
 
 # License
-Copyright (c) 2013 Tom Kane. Released under the [MIT License](http://opensource.org/licenses/mit-license.php). See [LICENSE](LICENSE) for details.
+Copyright (c) 2013 Tom Kane, Paweł Pawlik and other contributors. Released under the [MIT License](http://opensource.org/licenses/mit-license.php). See [LICENSE](LICENSE) for details.

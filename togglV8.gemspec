@@ -9,16 +9,12 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Paweł Pawlik"]
   spec.email         = ["pawel.pawlik@millwardbrown.com"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Extended ruby wrapper for Toggl API v8 and Reports API v2}
+  spec.description   = %q{Extended ruby wrapper for Toggl API v8 - forked from https://github.com/madcowley/togglv8}
+  spec.homepage      = "https://github.com/ddiatmb/togglv8"
   spec.license       = "MIT"
 
-  spec.files         = Dir['Rakefile', '{features,lib,spec}/**/*', 'README*', 'LICENSE*']
+  spec.files         = Dir['Rakefile', 'lib/**/*', 'README*', 'LICENSE*']
   spec.require_paths = %w[ lib ]
 
   spec.add_runtime_dependency 'faraday', '~> 0.9'
