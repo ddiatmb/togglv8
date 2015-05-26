@@ -4,3 +4,4 @@ toggl_entities.txt
 me.json
 Vagrantfile
 .vagrant
+Gemfile.lock

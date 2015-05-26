@@ -288,6 +288,11 @@ GET /workspaces
 GET /workspaces/282224/users
 ```
 
+### Get workspace users with group ids
+```
+GET /workspaces/282224/workspace_users
+```
+
 ### Get workspace clients
 ```
 GET /workspaces/282224/clients
@@ -296,6 +301,11 @@ GET /workspaces/282224/clients
 ### Get workspace projects
 ```
 GET /workspaces/282224/projects
+```
+
+### Get workspace groups
+```
+GET /workspaces/282224/groups
 ```
 
 ### Get workspace tasks
