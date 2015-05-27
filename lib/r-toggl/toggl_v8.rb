@@ -121,6 +121,10 @@ module Toggl
       get "projects/#{project_id}/project_users"
     end
 
+    def get_project_groups(project_id)
+      get "projects/#{project_id}/project_groups"
+    end
+
   #---------------------#
   #--- Project users ---#
   #---------------------#
@@ -147,6 +151,31 @@ module Toggl
 
     def delete_project_user(project_user_id)
       delete "project_users/#{project_user_id}"
+    end
+
+  #---------------------#
+  #--- Project groups ---#
+  #---------------------#
+
+  # pid      : project ID (integer, required)
+  # group_ids: group IDs, array of project group IDs, including the newly added (array of integers, required)
+  # group_id : group ID, which is added to project groups (integer, required)
+  # -- Additional fields --
+  # name     : name of the group which is added to project groups
+
+    def create_project_group(params)
+      checkParams(params, [:pid, :group_ids, :group_id])
+      params[:fields] = "name"  # for simplicity, always request name field
+      post "project_groups", {project_group: params}
+    end
+
+    def update_project_group(project_group_id, params)
+      params[:fields] = "name"  # for simplicity, always request name field
+      put "project_groups/#{project_group_id}", {project_group: params}
+    end
+
+    def delete_project_group(project_group_id)
+      delete "project_groups/#{project_group_id}"
     end
 
   #------------#
