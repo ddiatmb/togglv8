@@ -117,6 +117,10 @@ module Toggl
       put "projects/#{project_id}", {project: params}
     end
 
+    def delete_project(*project_ids)
+      delete "projects/#{project_ids.join(',')}"
+    end
+
     def get_project_users(project_id)
       get "projects/#{project_id}/project_users"
     end
