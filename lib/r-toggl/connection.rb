@@ -38,7 +38,7 @@ module Toggl
     def get(resource)
       puts "GET #{resource}" if @debug
       full_res = self.conn.get(resource)
-      res = JSON.parse(full_res.env[:body])
+      res = JSON.parse(handle_null(full_res.env[:body]))
       res.is_a?(Array) || res['data'].nil? ? res : res['data']
     end
 
@@ -46,7 +46,7 @@ module Toggl
       puts "POST #{resource} / #{data}" if @debug
       full_res = self.conn.post(resource, JSON.generate(data))
       if (200 == full_res.env[:status]) then
-        res = JSON.parse(full_res.env[:body])
+        res = JSON.parse(handle_null(full_res.env[:body]))
         res['data'].nil? ? res : res['data']
       else
         eval(full_res.env[:body])
@@ -56,7 +56,7 @@ module Toggl
     def put(resource, data)
       puts "PUT #{resource} / #{data}" if @debug
       full_res = self.conn.put(resource, JSON.generate(data))
-      res = JSON.parse(full_res.env[:body])
+      res = JSON.parse(handle_null(full_res.env[:body]))
       res['data'].nil? ? res : res['data']
     end
 
@@ -64,6 +64,11 @@ module Toggl
       puts "DELETE #{resource}" if @debug
       full_res = self.conn.delete(resource)
       (200 == full_res.env[:status]) ? "" : eval(full_res.env[:body])
+    end
+
+    # Handle Toggl API V8 null response which is invalid JSON
+    def handle_null(response_body)
+      response_body === 'null' ? '[]' : response_body
     end
   end
 end
