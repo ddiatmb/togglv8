@@ -5,7 +5,7 @@ require_relative 'lib/togglV8'
 require 'awesome_print'
 require 'time'
 
-tog = Toggl.new
+tog = Toggl::TogglV8.new
 
 # tog = Toggl.new(toggl_api_key)
 # tog = Toggl.new(username, password)
