@@ -4,7 +4,7 @@
 require_relative 'lib/togglV8'
 require 'time'
 
-tog = Toggl.new
+tog = Toggl::TogglV8.new
 
 if __FILE__ == $0
   te = tog.get_time_entries(Time.new(2012, 1, 1))
